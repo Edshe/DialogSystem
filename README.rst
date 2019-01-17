@@ -1,4 +1,4 @@
-django-project-skeleton
+Simply dialog system
 =======================
 
 
@@ -6,7 +6,7 @@ Meta
 ----
 
 Author:
-    Eduard Shemakhov
+    E.Shemakhov
 
 Status:
     in development
@@ -36,10 +36,10 @@ About
 This program is a simple questionnaire system.
 
 User can choice a questionnaire from a list.
-System will load a first question. After user answer the question - system
+System will load a first question. After user answer the question system
 saves user's answer and loads the next question.
 
-After all questions answered - system prints full dialog to browser console.
+After all questions answered system prints full dialog to browser console.
 
 
 
