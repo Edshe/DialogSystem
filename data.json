@@ -1,0 +1,47 @@
+[
+	{
+	"name": "For hungry people",
+	"questions": [
+			{
+			"text": "Are u hungry?",
+			"position": "1",
+			"choices":[
+					{
+					 "text":"No",
+					 "finish":"Ok. Call me when you're hungry.",
+					},
+					{
+					 "text":"Yes",
+					}
+				]
+			},
+			{
+			"text": "What would you like to eat?",
+			"position": "2",
+			"choices":[
+					{
+					 "text":"Hamburger",
+					 "finish":"Nice, I will order a hamburger for you!",
+					},
+					{
+					 "text":"Piza",
+					}
+				]
+			},
+			{
+			"text": "Would you like pizza with mushrooms?",
+			"position": "3",
+			"choices":[
+					{
+					 "text":"Yes",
+					 "finish":"Ok, I will order the best pizza in town for you",
+					},
+					{
+					 "text":"No",
+					 "finish":"No? Well... stay hungry then",
+					}
+				]
+			}
+		]
+	}
+]

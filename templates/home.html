@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extracss %}
+	<link rel="stylesheet" href="{% static "css/home.css" %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+	<div class="content" v-cloak>
+	 	<div id="questionnaires" class="questionnaires">
+			<span>Available questionnaires</span>
+			<p @click="showQuestionnaire" v-for="q in questionnaire_list" :id="q.id">${q.name}</p>
+		</div>
+
+
+		<div id="active_questionnaire">
+
+			<div v-if="questionnaire" class="question-buddy">
+				<span  class="questionnaire-name">Questionnaire: ${ questionnaire.name }</span>
+				<p v-if="question != null" class="question-text">${ question.text }</p>
+				<div class="choices">
+					<p class="border-but"  @click="sendUserAnswer" v-for="c in question.choices" :id="c.id">${ c.text }</p>
+				</div>
+			</div>
+			<div v-else="" class="plug">
+				<span>Choice some questionnaire :)</span>
+			</div>
+
+		</div>
+	</div>
+
+{% endblock %}

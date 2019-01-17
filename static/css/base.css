@@ -1,0 +1,134 @@
+body{
+	margin: 0;
+	background-color: #f9fafb;
+}
+a,
+a div{
+	color:#333 !important;
+}
+header{
+	position: absolute;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-direction: row;
+	width:100%;
+	height:70px;
+	justify-content: space-between;
+	padding-top: 40px;	
+	z-index: 2;
+}
+
+header .but{
+	height:30px;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	font-family: 'Helvetica';
+	cursor: pointer;
+}
+header .border-but{
+	border:1px solid rgba(0,0,0,0.1);
+	border-radius:30px;
+	transition: border 0.7s;
+}
+header .border-but:hover{
+	border:1px solid rgba(0,0,0,0.6);
+}
+
+
+header .left-side{
+	padding-left: 50px;
+}
+
+
+
+header .right-side{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	-moz-flex-direction: row;
+	-ms-flex-direction: row;
+	-o-flex-direction: row;
+	flex-direction: row;
+	width:auto;
+	justify-content: space-between;
+}
+header .right-side .login-but{
+	width:100px;
+}
+header .right-side .registration-but{
+	width:150px;
+	margin-right: 40px;
+}
+
+header .right-side .my-list-but{
+	width:190px;
+}
+header .right-side .logout-but{
+	width:100px;
+}
+header .right-side div{
+	margin-right: 50px;
+}
+
+
+
+
+
+.dialogs{
+	position: fixed;
+	top: 0;
+	right: 0;
+	width:380px;
+	height:100vh;
+	padding-left: 50px;
+	padding-right: 50px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #f0f0f0;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	margin-right: 0px !important;
+	z-index: 3;
+}
+.dialogs p.close{
+	font-size: 13px;
+	font-family: "Helvetica";
+	text-align: center;
+	position: relative;
+	left:0px;
+	display: block;
+	width:100%;
+	opacity:0.5;
+	cursor: pointer;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+.dialogs .dialogs-scroll{
+	position: relative;
+	top:0px;
+}
+
+.dialogs p{
+	text-align: center;
+	font-family: "Helvetica";
+	font-size: 16px;
+
+	margin-top: 100px;
+}
