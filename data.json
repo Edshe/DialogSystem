@@ -1,47 +1,100 @@
+
 [
-	{
-	"name": "For hungry people",
-	"questions": [
-			{
-			"text": "Are u hungry?",
-			"position": "1",
-			"choices":[
-					{
-					 "text":"No",
-					 "finish":"Ok. Call me when you're hungry.",
+		{
+		"model":"Questionnaire",
+		"fields":{
+			"name": "For hungry people",
+		},
+		"questions": [
+				{
+				"model":"Question",
+				"fields":{
+					"text": "Are u hungry?",
+					"position": "1",
 					},
-					{
-					 "text":"Yes",
-					}
-				]
-			},
-			{
-			"text": "What would you like to eat?",
-			"position": "2",
-			"choices":[
-					{
-					 "text":"Hamburger",
-					 "finish":"Nice, I will order a hamburger for you!",
+				"choices":[
+						{
+							"model":"Choice",
+							"fields":{
+								"text":"No",
+								"finish":{
+									"model":"QuestionnaireFinishText",
+									"fields": {
+										"text":"Ok. Call me when you're hungry."
+									}
+								},
+							}
+
+						},
+						{
+							"model":"Choice",
+							"fields":{
+						 		"text":"Yes",
+							}
+						}
+					]
+				},
+				{
+				"model":"Question",
+				"fields":{
+						"text": "What would you like to eat?",
+						"position": "2",
 					},
-					{
-					 "text":"Piza",
-					}
-				]
-			},
-			{
-			"text": "Would you like pizza with mushrooms?",
-			"position": "3",
-			"choices":[
-					{
-					 "text":"Yes",
-					 "finish":"Ok, I will order the best pizza in town for you",
+				"choices":[
+						{
+							"model": "Choice",
+							"fields": {
+								"text": "Hamburger",
+								"finish": {
+									"model":"QuestionnaireFinishText",
+									"fields": {
+										"text":"Nice, I will order a hamburger for you!"
+										}
+									},
+								}
+						},
+						{
+							"model":"Choice",
+							"fields":{
+								"text":"Piza",
+							}
+						}
+					]
+				},
+				{
+				"model":"Question",
+				"fields":{
+					"text": "Would you like pizza with mushrooms?",
+					"position": "3",
 					},
-					{
-					 "text":"No",
-					 "finish":"No? Well... stay hungry then",
-					}
-				]
-			}
-		]
-	}
-]
+				"choices":[
+						{
+							"model":"Choice",
+							"fields":{
+								"text":"Yes",
+								"finish": {
+									"model":"QuestionnaireFinishText",
+									"fields": {
+										"text":"Ok, I will order the best pizza in town for you"
+										}
+									},
+								},
+
+						},
+						{
+							"model":"Choice",
+							"fields":{
+								"text":"No",
+								"finish": {
+									"model":"QuestionnaireFinishText",
+									"fields": {
+										"text":"No? Well... stay hungry then"
+										}
+									},
+								},
+							}
+					]
+				}
+			]
+		}
+	]

@@ -18,15 +18,13 @@
 		<div class="right-side" >
 			{% if request.user.is_authenticated %}
 				<div id="dialogs_block">
-					
-						<div class="my-list-but but border-but" @click="getUserDialogs">Completed questionnaires</div>
-						<div class="dialogs" v-if="show">
-							<div id="dialogs-scroll">
-								<p @click="show = false" class="close">X Close</p>
-								<p v-for="d in dialogs" :id="d.id">${d.to_str}</p>
-							</div>
+					<div class="my-list-but but border-but" @click="getUserDialogs">Completed questionnaires</div>
+					<div class="dialogs" v-if="show">
+						<div id="dialogs-scroll">
+							<p @click="show = false" class="close">X Close</p>
+							<p v-for="d in dialogs" :id="d.id">${d.to_str}</p>
 						</div>
-					
+					</div>
 				</div>
 				<a href="/logout/"><div class="but log-out-but">Logout</div></a>
 			{% else %}
@@ -42,6 +40,6 @@
 <script>
 	window.csrf_token = "{{ csrf_token }}"
 </script>
-<script src="{% static "js/base.js" %}"></script>
+<script src="{% static "js/base.js" %}?v=2"></script>
 
 </html>

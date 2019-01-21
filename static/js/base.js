@@ -6,7 +6,7 @@ var questionnaire_vm = new Vue({
 	},
 	mounted(){
 		axios
-		.get('/questionnaires/')
+		.get('/api/questionnaires/')
 		.then((response) => {
 			this.questionnaire_list = response.data;
 		})
@@ -55,7 +55,7 @@ var active_dialog_vm = new Vue({
 				data = {
 					questionnaire:this.questionnaire.id
 				}
-				axios.post('/dialogs/', data, this.config)
+				axios.post('/api/dialogs/', data, this.config)
 				.then((response) => {
 					this.dialog = response.data;
 					this.sendUserAnswer(this.last_event)
@@ -67,7 +67,7 @@ var active_dialog_vm = new Vue({
 				});
 		},
 		refreshDialog: function(){
-				axios.get('/dialog/'+this.dialog.id+'/', {}, this.config)
+				axios.get('/api/dialogs/dialog/'+this.dialog.id+'/', {}, this.config)
 				.then((response) => {
 					this.dialog = response.data;
 					console.log(this.dialog.to_str)
@@ -89,16 +89,16 @@ var active_dialog_vm = new Vue({
 			}
 		},
 		getQuestion: function(question_id){
-				
-				var url = "/question/"+question_id+"/";
-				axios
-				.get(url)
-				.then((response) => {
-					this.question = response.data;
-				})
-				.catch((error) => {
-					console.log(error.response.data)
-				});
+			var url = "/api/questionnaires/question/"+question_id+"/";
+			axios
+			.get(url)
+			.then((response) => {
+				console.log(response.data)
+				this.question = response.data;
+			})
+			.catch((error) => {
+				console.log(error.response.data)
+			});
 		},
 		sendUserAnswer: function(event){
 			if (this.dialog != null){
@@ -106,8 +106,9 @@ var active_dialog_vm = new Vue({
 					dialog: this.dialog.id,
 					choice: event.target.id
 				}
-				axios.post('/useranswers/', data, this.config)
+				axios.post('/api/dialogs/useranswers/', data, this.config)
 				.then((response) => {
+					console.log(response.data)
 					this.answer = response.data;
 					this.checkChoice(event)
 				})
@@ -119,7 +120,6 @@ var active_dialog_vm = new Vue({
 			}else{
 				this.startDialog()
 				this.last_event = event
-				
 			}
 		},
 		checkChoice: function(event){
@@ -160,7 +160,7 @@ var dialogs_vm = new Vue({
 
 	methods:{
 		getUserDialogs: function(){
-			var url = "/dialogs/";
+			var url = "/api/dialogs/";
 			axios
 			.get(url)
 			.then((response) => {

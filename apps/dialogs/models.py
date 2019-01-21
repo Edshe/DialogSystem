@@ -4,18 +4,24 @@ from __future__ import unicode_literals
 from django.db import models
 
 from ..users.models import User
-from ..questionnaires.models import Questionnaire, Question, Choice
+from ..questionnaires.models import Questionnaire, Choice
 
 
 class Dialog(models.Model):
     """
-    Model represents the Dialogs between system and User or AnonymousUser
-    Dialog can be linked with some User and should be linked with some Questionnaire
+    Model represents the Dialogs between system and user.
+    Dialog can be linked with some User record and should be linked with some Questionnaire record.
+
+    When User starts a conversation, system creates a new Dialog record. User answers
+    during the conversation will be linked to the dialog.
     """
     user = models.ForeignKey(User, verbose_name="User", null=True, blank=True)
     questionnaire = models.ForeignKey(Questionnaire, verbose_name="Questionnaire" )
 
     created = models.DateTimeField(verbose_name="Creation date", auto_now_add=True)
+
+    class Meta:
+        ordering = ['-id']
 
     def __str__(self):
         if self.user:
@@ -24,8 +30,14 @@ class Dialog(models.Model):
 
     @property
     def to_str(self):
+        """
+        String representation of dialog.
+        Example: Are you hungry? -> Yes
+        """
         if self.answers:
-            return "\n".join(["{} -> {}".format(answer[0], answer[1]) for answer in self.dialog_list])
+            result = "\n".join(["{} -> {} ->".format(answer[0], answer[1]) for answer in self.dialog_list])
+            result = result.replace(' ->  ->', '')
+            return result
         return self.__str__()
 
     @property
@@ -41,13 +53,16 @@ class Dialog(models.Model):
             __answers = list(self.useranswer_set.all())
         return __answers
 
+    def get_next_question(self, current):
 
+        return __answers
 
 
 class UserAnswer(models.Model):
     """
-    Model links Dialog, Question and Choice that
-    users choice during a conversation
+    Model represents an user answers to a questions.
+    Every UserAnswer contains an user's Choice to a
+    question and belongs to some dialog.
     """
     dialog = models.ForeignKey(Dialog, verbose_name="Dialog", null=True, blank=True)
     choice = models.ForeignKey(Choice, verbose_name="Answer", null=True, blank=True)

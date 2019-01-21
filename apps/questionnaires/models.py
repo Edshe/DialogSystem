@@ -3,13 +3,11 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-from ..users.models import User
-
 
 class Questionnaire(models.Model):
     """
-    Questionaire model that used for dialogs with users.
-    It contains Questions and Choices which represent EAV pattern
+    Model represents a questionnaire
+    that user can choice and go through.
     """
     name = models.CharField(
         verbose_name="Name",
@@ -29,24 +27,10 @@ class Questionnaire(models.Model):
         return None
 
 
-class QuestionnaireFinishText(models.Model):
-    """
-    Model represents system's answer for a Choice
-    if the Choice finishes a dialog.
-    """
-    text = models.CharField(
-        verbose_name="Choice text",
-        max_length=150)
-
-    def __str__(self):
-        return self.text
-
-
 class Question(models.Model):
     """
-    Every question belongs to some Questionaire
-    and contains "text" field.
-    For every Question should be created some Choices.
+    Model represents question that user can answer to.
+    Every question belongs to some Questionaire.
     """
     questionnaire = models.ForeignKey(
         Questionnaire,
@@ -61,6 +45,9 @@ class Question(models.Model):
         default=0,
         help_text = "The smaller the first",
     )
+    class Meta:
+        ordering = ['position',]
+
     def __str__(self):
         return "{}: {}".format(self.questionnaire.name, self.text)
 
@@ -70,7 +57,7 @@ class Question(models.Model):
 
 class Choice(models.Model):
     """
-    Model represents Choices for a Question.
+    Model represents Choice for a Question.
     """
     question = models.ForeignKey(
         Question,
@@ -89,7 +76,7 @@ class Choice(models.Model):
         max_length=150)
 
     finish = models.ForeignKey(
-        QuestionnaireFinishText,
+        'QuestionnaireFinishText',
         verbose_name="Is finish",
         null=True,
         blank=True,
@@ -98,3 +85,17 @@ class Choice(models.Model):
     def __str__(self):
         return self.text
 
+
+
+
+class QuestionnaireFinishText(models.Model):
+    """
+    Model represents system's answer for a Choice
+    if the Choice means exit from Questionnaire.
+    """
+    text = models.CharField(
+        verbose_name="Choice text",
+        max_length=150)
+
+    def __str__(self):
+        return self.text

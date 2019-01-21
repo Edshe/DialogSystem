@@ -3,10 +3,9 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 from django.http import JsonResponse
 
-from ..users.models import User
 from .forms import AuthenticationForm
 
 
@@ -44,11 +43,14 @@ class LoginView(View):
 
 
 class LogoutView(View):
+    """
+    View for logout get requests
+    """
     def get(self, request, *args, **kwargs):
         logout(request)
         return redirect('/')
 
 
 
-class HomeView(TemplateView):
+class HomeFeedView(TemplateView):
     template_name = 'home.html'

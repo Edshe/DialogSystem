@@ -1,0 +1,44 @@
+INFO:root:---- Reading file
+INFO:root:- Done
+INFO:root:---- Serializing object: Questionnaire
+INFO:root:{'name': 'For hungry people'}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Question
+INFO:root:{'text': 'Are u hungry?', 'questionnaire': 14, 'position': '1'}
+INFO:root:- Object created
+INFO:root:---- Serializing object: QuestionnaireFinishText
+INFO:root:{'text': "Ok. Call me when you're hungry."}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Choice
+INFO:root:{'text': 'No', 'finish': 15, 'question': 24}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Choice
+INFO:root:{'text': 'Yes', 'question': 24}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Question
+INFO:root:{'text': 'What would you like to eat?', 'questionnaire': 14, 'position': '2'}
+INFO:root:- Object created
+INFO:root:---- Serializing object: QuestionnaireFinishText
+INFO:root:{'text': 'Nice, I will order a hamburger for you!'}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Choice
+INFO:root:{'text': 'Hamburger', 'finish': 16, 'question': 25}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Choice
+INFO:root:{'text': 'Piza', 'question': 25}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Question
+INFO:root:{'text': 'Would you like pizza with mushrooms?', 'questionnaire': 14, 'position': '3'}
+INFO:root:- Object created
+INFO:root:---- Serializing object: QuestionnaireFinishText
+INFO:root:{'text': 'Ok, I will order the best pizza in town for you'}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Choice
+INFO:root:{'text': 'Yes', 'finish': 17, 'question': 26}
+INFO:root:- Object created
+INFO:root:---- Serializing object: QuestionnaireFinishText
+INFO:root:{'text': 'No? Well... stay hungry then'}
+INFO:root:- Object created
+INFO:root:---- Serializing object: Choice
+INFO:root:{'text': 'No', 'finish': 18, 'question': 26}
+INFO:root:- Object created

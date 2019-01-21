@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse
-from django.test import TestCase, Client
+from django.test import TestCase
 
 from .models import User
 from .forms import AuthenticationForm
@@ -18,7 +18,7 @@ class LoginViewTest(TestCase):
             email='test@gmail.com',
             password='12345'
         )
-        response = self.client.post(reverse('login'), data=data)
+        response = self.client.post(reverse('users-urls:login'), data=data)
         self.assertEqual(response.status_code, 302)
 
     def test_LoginView_wrong_password_auth(self):
@@ -26,10 +26,10 @@ class LoginViewTest(TestCase):
             email='test@gmail.com',
             password='zxczx'
         )
-        response = self.client.post(reverse('login'), data=data)
+        response = self.client.post(reverse('users-urls:login'), data=data)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json().has_key('errors'), True)
 
     def test_login_page(self):
-        response = self.client.get(reverse('login'))
+        response = self.client.get(reverse('users-urls:login'))
         self.assertIsInstance(response.context['form'], AuthenticationForm)
